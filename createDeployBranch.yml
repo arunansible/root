@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  become: false
+  gather_facts: no
+
+  roles:
+     - versa_fetch_existing_devices
+     - versa_create_branch
+     - versa_deploy_branch
