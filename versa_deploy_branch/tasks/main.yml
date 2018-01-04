@@ -1,0 +1,18 @@
+---
+
+- name: Deploy Branch
+  uri:
+    url: "https://35.165.81.59:9182/vnms/sdwan/workflow/devices/device/deploy/{{branchName}}"
+    method: POST
+    user: "{{ username }}"
+    password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 202
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
