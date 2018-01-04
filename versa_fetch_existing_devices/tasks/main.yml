@@ -1,0 +1,21 @@
+---
+
+- name: Fetch Existing Devices
+  uri:
+    url: "https://35.165.81.59:9182/vnms/sdwan/workflow/devices?offset=0&limit=25"
+    method: GET
+    user: "{{ username }}"
+    password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+
+- set_fact:
+    max_site_id: "{{ response.content | versa_max_site_id }}"
